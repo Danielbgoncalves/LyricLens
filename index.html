@@ -1,0 +1,155 @@
+<!---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lyrics Lens</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Lyrics Lens</h1>
+        <p>Discover your favorite lyrics with ease!</p>
+    </header>
+    <main class="main">
+        <div class="form-container">
+            <form id="lyrics-form">
+                <label for="song">Song Name:</label>
+                <input type="text" id="song" name="song" placeholder="Enter song name..." required>
+                
+                <label for="artist">Artist/Band:</label>
+                <input type="text" id="artist" name="artist" placeholder="Enter artist or band..." required>
+                
+                <button type="submit" id="submit">Search Lyrics</button>
+            </form>
+        </div>
+        <div class="lyrics-display" id="lyrics-display">
+            <h2>Lyrics</h2>
+            <p>Search for a song to see the lyrics displayed here!</p>
+        </div>
+    </main>
+    <footer class="footer">
+        <p>© 2024 Lyrics Lens. Made with ❤️ for music lovers.</p>
+    </footer>
+</body>
+</html>
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escolher Música</title>
+    <style>
+        /* Estilos básicos */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        /* Container da lista de opções */
+        #opcoesMusicas {
+            display: none; /* Inicialmente escondido */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            z-index: 1000;
+        }
+
+        /* Estilo da lista */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+            cursor: pointer;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        li:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* Fundo escurecido */
+        #fundoEscuro {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Buscar Música</h1>
+<button onclick="mostrarOpcoes()">Buscar</button>
+
+<!-- Fundo escurecido -->
+<div id="fundoEscuro" ></div>
+
+<!-- Container das opções -->
+<div id="opcoesMusicas">
+    <h2>Escolha a música:</h2>
+    <ul id="listaMusicas">
+        <!-- As opções serão inseridas dinamicamente -->
+    </ul>
+    <button onclick="fecharOpcoes()">Cancelar</button>
+</div>
+
+<script>
+    // Função para exibir a lista de músicas
+    function mostrarOpcoes() {
+        // Simulando músicas encontradas
+        const musicas = [
+            "Música 1 - Artista A",
+            "Música 2 - Artista B",
+            "Música 3 - Artista C"
+        ];
+
+        const lista = document.getElementById("listaMusicas");
+        lista.innerHTML = ""; // Limpar opções anteriores
+
+        // Adicionar músicas à lista
+        musicas.forEach((musica, index) => {
+            const li = document.createElement("li");
+            li.textContent = musica;
+            li.onclick = () => selecionarMusica(musica); // Evento para selecionar música
+            lista.appendChild(li);
+        });
+
+        // Exibir o modal
+        document.getElementById("opcoesMusicas").style.display = "block";
+        document.getElementById("fundoEscuro").style.display = "block";
+    }
+
+    // Função para ocultar a lista
+    function fecharOpcoes() {
+        document.getElementById("opcoesMusicas").style.display = "none";
+        document.getElementById("fundoEscuro").style.display = "none";
+    }
+
+    // Função ao selecionar uma música
+    function selecionarMusica(musica) {
+        alert(`Você escolheu: ${musica}`);
+        fecharOpcoes();
+    }
+</script>
+
+</body>
+</html>
